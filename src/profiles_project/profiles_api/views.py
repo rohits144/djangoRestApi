@@ -9,6 +9,8 @@ from rest_framework import status
 
 from . import serializers
 
+from . import models
+
 # Create your views here.
 
 class HelloApiView(APIView):
@@ -114,3 +116,11 @@ class HelloViewSet(viewsets.ViewSet):
         """delete objext by id"""
 
         return Response({'http-method':'Delete'})
+
+class UserProfileViewSet(viewsets.ModelViewSet):
+    """ handles creating and updating  profiles"""
+
+    serializer_class = serializers.UserProfileSerializer
+
+    queryset = models.UserProfile.object.all()
+
